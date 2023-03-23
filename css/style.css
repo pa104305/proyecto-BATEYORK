@@ -1,0 +1,64 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.case{
+    border: 1px solid black;
+    width: 35vw;
+    height: 90vh;
+    position: relative;
+    left: 32.5vw;
+    top: 5vh;
+}
+.case > .screen{
+    border: 1px solid black;
+    width: 32vw;
+    height: 18vh;
+    position: relative;
+    left: 1.5vw;
+    top: 1vh;
+}
+.case > .keyboard{
+    border: 1px solid black;
+    width: 32vw;
+    height: 68vh;
+    position: relative;
+    top: 2vh;
+    left: 1.5vw;
+}
+.case > .keyboard > .uno{
+    display: flex;
+    flex-direction: row;
+}
+.case > .keyboard > .dos{
+    display: flex;
+    flex-direction: row;
+}
+.case > .keyboard > .tres{
+    display: flex;
+    flex-direction: row;
+}
+.case > .keyboard > .cuatro{
+    display: flex;
+    flex-direction: row;
+}
+.case > .keyboard > .cinco{
+    display: flex;
+    flex-direction: row;
+}
+.case > .keyboard > .seis{
+    display: flex;
+    flex-direction: row;
+}
+.case > .keyboard > .siete{
+    display: flex;
+    flex-direction: row;
+}
+.case > .keyboard > div > .key{
+    border: 1px solid black;
+    width: 6.4vw;
+    height: 9.71vh;
+    text-align: center;
+    padding-top: 3.6vh;
+}
