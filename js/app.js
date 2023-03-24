@@ -28,27 +28,81 @@ function writeNumber(number){
 // funcion para pasar al programa la operacion seleccionada, y mantenerla guardada
 function selectOperation(operationSelected){
     operation = operationSelected
+    if(operationSelected == "exp"){
+        num2 = num1
+        num1 = 2.7182
+    }
     small.innerHTML = num1 + operation;
 }
 // funcion para imprimir el reusltado al presionar igual, comprueba que operador se eligio y despues lleva acabo la operacion deseada
 function printResult(){
     if(operation == "+"){
         result = parseFloat(num1) + parseFloat(num2);
+        printScreen();
     }else if(operation == "-"){
         result = num1 - num2;
+        printScreen();
     }else if(operation == "*"){
         result = num1 * num2;
+        printScreen();
     }else if(operation == "/"){
         result = num1 / num2;
+        printScreen();
+    }else if(operation == "mod"){
+        result = num1 % num2;
+        printScreen();
     }else if(operation == "*10^"){
         result = num1 * Math.pow(10, num2);
+        printScreen();
     }else if(operation == "^"){
         result = Math.pow(num1, num2);
+        printScreen();
     }else if(operation == "sqrt"){
         result = Math.sqrt(num1);
+        if(isNaN(result) == false){
+            small.innerHTML = operation + num1;
+            large.innerHTML = result;
+        }else{
+            small.innerHTML = operation + num1;
+            large.innerHTML = "Sintax Error :(";
+        }
     }else if(operation == "²"){
         result = Math.pow(num1, 2);
+        small.innerHTML = num1 + operation;
+        large.innerHTML = result;
+    }else if(operation == "|"){
+        if(num1 < 0){result = num1 * -1}else{result = num1}
+        small.innerHTML = operation + num1 + operation;
+        large.innerHTML = result;
+    }else if(operation == "exp"){
+        result = Math.pow(num1, num2)
+        printScreen();
+    }else if(operation == "!"){
+        let i = 2;
+        while(i <= num1 ){
+            let sum = i * (i - 1);
+            if(result == undefined){result = 1}
+            result *= i
+            i++
+        }
+        small.innerHTML = num1 + operation;
+        large.innerHTML = result;
+    }else if(operation == "log"){
+        result = Math.log10(num1)
+        small.innerHTML = operation + num1;
+        large.innerHTML = result;
+    }else if(operation == "ln"){
+        result = Math.log(num1)
+        small.innerHTML = operation + num1;
+        large.innerHTML = result;
+    }else if(operation == "1/"){
+        result = 1/num1
+        small.innerHTML = operation + num1;
+        large.innerHTML = result;
     }
+}
+
+function printScreen(){
     small.innerHTML = num1 + operation + num2;
     large.innerHTML = result;
 }
@@ -60,4 +114,12 @@ function clean(){
     operation = undefined;
     small.innerHTML = num1;
     large.innerHTML = num1;
+}
+
+function changeSimbol(){
+    if(operation == undefined){
+        num1 = num1 * -1;
+    }else{
+        num2 = num2 * -1;
+    }
 }
