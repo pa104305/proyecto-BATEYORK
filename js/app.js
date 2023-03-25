@@ -1,6 +1,11 @@
 // Declaracion de variables principales, num1 → primer numero; num2 → segundo numero; result → resultado; operation → operacion
-let num1, num2, result, operation;
-
+let num1, num2, result, operation, state = true;
+let sf = document.getElementById("secondFirst");
+let ss = document.getElementById("secondSecond");
+let st = document.getElementById("secondThirth");
+let sfo = document.getElementById("secondFourth");
+let sfi = document.getElementById("secondFiveth");
+let sx = document.getElementById("secondSixth");
 const small = document.getElementById("small");
 const large = document.getElementById("large");
 // funcion para escibir el numero, recibe un valor al ser llamada y es el numero seleccionado
@@ -34,8 +39,15 @@ function selectOperation(operationSelected){
     }
     small.innerHTML = num1 + operation;
 }
+function purgeParenteces(){
+    num1 = num1.replace('(', '');
+    num1 = num1.replace(')', '');
+    num2 = num2.replace('(', '');
+    num2 = num2.replace(')', '');
+}
 // funcion para imprimir el reusltado al presionar igual, comprueba que operador se eligio y despues lleva acabo la operacion deseada
 function printResult(){
+    purgeParenteces();
     if(operation == "+"){
         result = parseFloat(num1) + parseFloat(num2);
         printScreen();
@@ -99,6 +111,27 @@ function printResult(){
         result = 1/num1
         small.innerHTML = operation + num1;
         large.innerHTML = result;
+    }else if(operation == "³"){
+        result = Math.pow(num1, 3);
+        small.innerHTML =  num1 + operation;
+        large.innerHTML = result;
+    }else if(operation == "sqrt3"){
+        result = Math.cbrt(num1)
+        small.innerHTML =  num1 + operation;
+        large.innerHTML = result;
+    }else if(operation == "sqrty"){
+        result = Math.pow(num1, 1/num2);
+        printScreen();
+    }else if(operation == "2^"){
+        result = Math.pow(2, num1);
+        small.innerHTML =   operation + num1;
+        large.innerHTML = result;
+    }else if(operation == "logyx"){
+        result = Math.log(num2) / Math.log(num1);
+        printScreen();
+    }else if(operation == "e^"){
+        num2 = 2.7182;
+        result = Math.pow(num2, num1)
     }
 }
 
@@ -121,5 +154,50 @@ function changeSimbol(){
         num1 = num1 * -1;
     }else{
         num2 = num2 * -1;
+    }
+}
+
+function secondFunction(){
+
+    if(state == true){
+        state = false;
+        document.getElementById("second").style.background = 'yellowgreen';
+        document.getElementById("secondFirst").innerHTML = 'x3';
+        document.getElementById("secondSecond").innerHTML = 'sqrt3';
+        document.getElementById("secondThirth").innerHTML = 'sqrty';
+        document.getElementById("secondFourth").innerHTML = '2^';
+        document.getElementById("secondFiveth").innerHTML = 'logyx';
+        document.getElementById("secondSixth").innerHTML = 'e^';
+        sf.onclick = () => {selectOperation("³");}
+        ss.onclick = () => {selectOperation("sqrt3");}
+        st.onclick = () => {selectOperation("sqrty");}
+        sfo.onclick = () => {selectOperation("2^");}
+        sfi.onclick = () => {selectOperation("logyx");}
+        sx.onclick = () => {selectOperation("e^");}
+    }else{
+        state = true;
+        document.getElementById("second").style.background = 'white';
+        document.getElementById("secondFirst").innerHTML = 'x2';
+        document.getElementById("secondSecond").innerHTML = 'sqrt';
+        document.getElementById("secondThirth").innerHTML = '^';
+        document.getElementById("secondFourth").innerHTML = '*10x';
+        document.getElementById("secondFiveth").innerHTML = 'log';
+        document.getElementById("secondSixth").innerHTML = 'ln';
+        sf.onclick = () => {selectOperation("²");}
+        ss.onclick = () => {selectOperation("sqrt");}
+        st.onclick = () => {selectOperation("^");}
+        sfo.onclick = () => {selectOperation("*10x");}
+        sfi.onclick = () => {selectOperation("log");}
+        sx.onclick = () => {selectOperation("ln");}
+    }
+}
+
+function backward(){
+    if(operation == undefined){
+        num1 = num1.slice(0, -1);
+        large.innerHTML = num1;
+    }else{
+        num2 = num2.slice(0, -1);
+        large.innerHTML = num2;
     }
 }
