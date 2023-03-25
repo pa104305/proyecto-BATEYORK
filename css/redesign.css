@@ -1,0 +1,31 @@
+.case{
+    border-radius: 18px;
+    background: black;
+}
+.key{
+    border-radius: 100%;
+    margin: 0.5px;
+    background: #444;
+}
+.screen{
+    border-radius: 35px;
+    background: #ccc;
+}
+.screen > h2{
+    position: relative;
+    top: 6vh;
+    left: 3vw;
+    font-size: 32px;
+}
+.screen > h3{
+    position: relative;
+    top: 5vh;
+    left: 1vw;
+    font-size: 24px;
+}
+.basic{
+    background: orange;
+}
+.number{
+    background: #aeaeae;
+}
